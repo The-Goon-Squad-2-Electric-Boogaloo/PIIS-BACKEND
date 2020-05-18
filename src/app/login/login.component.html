@@ -1,0 +1,41 @@
+<body class="preview-page">
+<div *ngIf="!esconder"><br><br><br><br><br><br>
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="text-align: center;">Iniciar sesion</h3>
+                </div>
+                <div class="panel-body, text-center">
+ <form [formGroup]="angForm2" novalidate>
+      <div class="form-group">
+        <label class="center-block" style="text-align: left;">
+          <b>Usuario:</b><br>
+          <div *ngIf="usuarioVacio"><div class="errorVacio">Usuario incorrecto</div></div>
+          <input class="form-control form-control-user" formControlName="user"><br>
+          <b>Contraseña:</b><br>
+          <div *ngIf="contrasenaVacia"><div class="errorVacio">Contraseña incorrecta</div></div>
+          <input type="password" class="form-control" formControlName="pass"><br> <!--p27QRsc-->
+          <button class="ColorBoton, btn btn-lg btn-success btn-block" (click)="postLogin()">Hacer Login</button>
+        </label>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+<div *ngIf="found2">
+  <router-outlet></router-outlet>
+</div>
+
+
+</body>

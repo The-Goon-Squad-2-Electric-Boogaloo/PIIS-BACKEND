@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModificarComponent } from './modificar.component';
+import { ModificarComponent } from './modificar/modificar.component';
 
 
 const routes: Routes = [

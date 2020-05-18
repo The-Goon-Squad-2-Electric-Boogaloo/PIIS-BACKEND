@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login.component';
-import { ModificarComponent } from './modificar.component';
+import { LoginComponent } from './login/login.component';
+import { ModificarComponent } from './modificar/modificar.component';
 
 @NgModule({
   declarations: [

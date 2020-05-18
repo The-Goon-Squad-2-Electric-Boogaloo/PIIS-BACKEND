@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Administrador</a>
+      </div>
+      <!-- /.navbar-header -->
+
+      <ul class="nav navbar-top-links navbar-right">
+
+        <!-- /.dropdown -->
+
+        <!-- /.dropdown -->
+
+        <!-- /.dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Cerrar sesion una vez realizados los cambios
+            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li class="divider"></li>
+            <li><a (click)="cerrarSesion()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
+          </ul>
+          <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+      </ul>
+      <!-- /.navbar-top-links -->
+
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+            <!--
+            <li>
+              <a href="modificar.component.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+            </li> /.nav-second-level-->
+
+
+            <li>
+              <a (click)="mostrarCientifico1() "><i class="fa fa-bar-chart-o fa-fw"></i> Cientifico 1<span
+                  class="fa arrow"></span></a>
+
+            </li>
+            <li>
+              <a (click)="mostrarCientifico2()"><i class="fa fa-bar-chart-o fa-fw"></i> Cientifico 2<span
+                  class="fa arrow"></span></a>
+
+            </li>
+            <li>
+              <a (click)="mostrarCientifico3()"><i class="fa fa-bar-chart-o fa-fw"></i> Cientifico 3<span
+                  class="fa arrow"></span></a>
+
+            </li>
+            <li>
+              <a (click)="mostrarCientifico4()"><i class="fa fa-bar-chart-o fa-fw"></i> Cientifico 4<span
+                  class="fa arrow"></span></a>
+
+            </li>
+
+          </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+      </div>
+      <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper" style="padding-bottom: 10%;">
+      <div class="row">
+        <div class="col-lg-12">
+          <br>
+        </div>
+        <!-- /.col-lg-12 -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Modificar campos<div *ngIf="cientificoVacio"><div class="errorVacio">Seleccione un cientifico</div></div>
+            </div>
+            <!--/////////////////////////////////////////////////////////////////////-->
+            <div *ngIf="!mostrarVacio" style="width: 95%;">
+              <form [formGroup]="angForm" novalidate enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="center-block">
+                    Nombre nuevo
+                    <br><div *ngIf="nombreVacio"><div class="errorVacio">Campo vacio</div></div>
+                    
+                    <input class="form-control" formControlName="nombre" style="color: black;" placeholder=""><br>
+                    Descripcion nueva
+                    <br><div *ngIf="descripcionVacio"><div class="errorVacio">Campo vacio</div></div><br>
+                    <textarea class="textarea" class="form-control" rows="4" formControlName="descripcion" style="color: black;"></textarea><br>
+                    Generación de energía por segundo
+                    <br><div *ngIf="energiaVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="energia" style="color: black;" placeholder=""><br>
+                    Precio
+                    <br><div *ngIf="precioVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="precio" style="color: black;" placeholder=""><br>
+                    (No seleccionar un archivo mantiene la imagen anterior)<br>
+                    <input class type="file" (change)="onFileSelected($event)" id="myFile">
+                    <br>
+                    <button class="btn-success" (click)="principalFuncion()">Actualizar cientifico</button><br>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="mostrar1" style="width: 95%;">
+              <form [formGroup]="angForm" novalidate enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="center-block">
+                    Nombre nuevo
+                    <br><div *ngIf="nombreVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input class="form-control" formControlName="nombre" style="color: black;" placeholder="{{nombreCientifico[0]}}"><br>
+                    Descripcion nueva
+                    <br><div *ngIf="descripcionVacio"><div class="errorVacio">Campo vacio</div></div><br>
+                    <textarea class="textarea" class="form-control" rows="4" formControlName="descripcion" style="color: black;"
+                      placeholder="{{descCientifico[0]}}"></textarea><br>
+                    Generación de energía por segundo
+                    <br><div *ngIf="energiaVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="energia" style="color: black;"
+                      placeholder="{{energiasCientificos[0]}}"><br>
+                    Precio
+                    <br><div *ngIf="precioVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="precio" style="color: black;"
+                      placeholder="{{preciosCientificos[0]}}"><br>
+                    (No seleccionar un archivo mantiene la imagen anterior)<br>
+                    <input class type="file" (change)="onFileSelected($event)" id="myFile">
+                    <br>
+                    <button class="btn-success" (click)="principalFuncion()">Actualizar cientifico</button><br>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="mostrar2" style="width: 95%;">
+              <form [formGroup]="angForm" novalidate enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="center-block">
+                    Nombre nuevo
+                    <br><div *ngIf="nombreVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input class="form-control" formControlName="nombre" style="color: black;" placeholder="{{nombreCientifico[1]}}"><br>
+                    Descripcion nueva
+                    <br><div *ngIf="descripcionVacio"><div class="errorVacio">Campo vacio</div></div><br>
+                    <textarea class="textoarea" class="form-control" rows="4" formControlName="descripcion" style="color: black;"
+                      placeholder="{{descCientifico[1]}}"></textarea><br>
+                    Generación de energía por segundo
+                    <br><div *ngIf="energiaVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="energia" style="color: black;"
+                      placeholder="{{energiasCientificos[1]}}"><br>
+                    Precio
+                    <br><div *ngIf="precioVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="precio" style="color: black;"
+                      placeholder="{{preciosCientificos[1]}}"><br>
+                    (No seleccionar un archivo mantiene la imagen anterior)<br>
+                    <input class type="file" (change)="onFileSelected($event)" id="myFile">
+                    <br>
+                    <button class="btn-success" (click)="principalFuncion()">Actualizar cientifico</button><br>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="mostrar3" style="width: 95%;">
+              <form [formGroup]="angForm" novalidate enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="center-block">
+                    Nombre nuevo
+                    <br><div *ngIf="nombreVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input class="form-control" formControlName="nombre" style="color: black;" placeholder="{{nombreCientifico[2]}}"><br>
+                    Descripcion nueva
+                    <br><div *ngIf="descripcionVacio"><div class="errorVacio">Campo vacio</div></div><br>
+                    <textarea class="textoarea" class="form-control" rows="4" formControlName="descripcion" style="color: black;"
+                      placeholder="{{descCientifico[2]}}"></textarea><br>
+                    Generación de energía por segundo
+                    <br><div *ngIf="energiaVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="energia" style="color: black;"
+                      placeholder="{{energiasCientificos[2]}}"><br>
+                    Precio
+                    <br><div *ngIf="precioVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="precio" style="color: black;"
+                      placeholder="{{preciosCientificos[2]}}"><br>
+                    (No seleccionar un archivo mantiene la imagen anterior)<br>
+                    <input class type="file" (change)="onFileSelected($event)" id="myFile">
+                    <br>
+                    <button class="btn-success" (click)="principalFuncion()">Actualizar cientifico</button><br>
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="mostrar4" style="width: 95%;">
+              <form [formGroup]="angForm" novalidate enctype="multipart/form-data">
+                <div class="form-group">
+                  <label class="center-block">
+                    Nombre nuevo
+                    <br><div *ngIf="nombreVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input class="form-control" formControlName="nombre"  style="color: black;" placeholder="{{nombreCientifico[3]}}"><br>
+                    Descripcion nueva
+                    <br><div *ngIf="descripcionVacio"><div class="errorVacio">Campo vacio</div></div><br>
+                    <textarea class="textoarea" class="form-control" rows="4" formControlName="descripcion" style="color: black;"
+                      placeholder="{{descCientifico[3]}}"></textarea><br>
+                    Generación de energía por segundo
+                    <br><div *ngIf="energiaVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="energia" style="color: black;"
+                      placeholder="{{energiasCientificos[3]}}"><br>
+                    Precio
+                    <br><div *ngIf="precioVacio"><div class="errorVacio">Campo vacio</div></div>
+                    <input type="number" class="form-control" formControlName="precio" style="color: black;"
+                      placeholder="{{preciosCientificos[3]}}"><br>
+                    (No seleccionar un archivo mantiene la imagen anterior)<br>
+                    <input class type="file" (change)="onFileSelected($event)" id="myFile">
+                    <br>
+                    <button class="btn-success" (click)="principalFuncion()">Actualizar cientifico</button><br>
+                  </label>
+                </div>
+              </form>
+            </div>
+            <!--/////////////////////////////////////////////////////////////////////-->
+
+            <!-- .panel-body -->
+          </div>
+          <!-- /.panel -->
+        </div>
+
+
+        <!--  ///////////////// Empieza el panel lateral /////////////////  -->
+
+        <div *ngIf="mostrar1">
+
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" style="width: 55%;">
+              <div class="panel-heading">
+                Cientifico 1
+              </div>
+              <!-- /.panel-heading -->
+            
+                <div class="form-group">
+                  <div class="titulo">
+                    <img class="imagen" [src]="rutaImagen[0]"><br>
+                  </div>
+
+                  <b>Nombre</b>
+                  <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{nombreCientifico[0]}}</div>
+
+                  <div class="campoLateral">
+                    <b>Descripcion</b><br>
+                    <textarea class="textarea" disabled="disabled" rows="4"cols="36" style="color: black;">{{descCientifico[0]}}</textarea><br>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Energia</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{energiasCientificos[0]}}</div>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Precio</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{preciosCientificos[0]}}</div><br>
+                  </div>
+                </div>
+
+              <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+
+        </div>
+
+        <!--/////////////////////////////////////////////////////////////////////-->
+
+        <div *ngIf="mostrar2">
+
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" style="width: 55%;">
+              <div class="panel-heading">
+                Cientifico 2
+              </div>
+              <!-- /.panel-heading -->
+            
+                <div class="form-group">
+                  <div class="titulo">
+                    <img class="imagen" [src]="rutaImagen[1]"><br>
+                  </div>
+
+                  <b>Nombre</b>
+                  <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{nombreCientifico[1]}}</div>
+
+                  <div class="campoLateral">
+                    <b>Descripcion</b><br>
+                    <textarea class="textarea" disabled="disabled" rows="4" cols="36" style="color: black;">{{descCientifico[1]}}</textarea><br>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Energia</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{energiasCientificos[1]}}</div>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Precio</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{preciosCientificos[1]}}</div><br>
+                  </div>
+                </div>
+
+              <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+
+        </div>
+
+        <!--/////////////////////////////////////////////////////////////////////-->
+
+        <div *ngIf="mostrar3">
+
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" style="width: 55%;">
+              <div class="panel-heading">
+                Cientifico 3
+              </div>
+              <!-- /.panel-heading -->
+            
+                <div class="form-group">
+                  <div class="titulo">
+                    <img class="imagen" [src]="rutaImagen[2]"><br>
+                  </div>
+
+                  <b>Nombre</b>
+                  <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{nombreCientifico[2]}}</div>
+
+                  <div class="campoLateral">
+                    <b>Descripcion</b><br>
+                    <textarea class="textarea" disabled="disabled" rows="4" cols="36" style="color: black;">{{descCientifico[2]}}</textarea><br>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Energia</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{energiasCientificos[2]}}</div>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Precio</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{preciosCientificos[2]}}</div><br>
+                  </div>
+                </div>
+
+              <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+
+        </div>
+
+        <!--/////////////////////////////////////////////////////////////////////-->
+
+        <div *ngIf="mostrar4">
+
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" style="width: 55%;">
+              <div class="panel-heading">
+                Cientifico 4
+              </div>
+              <!-- /.panel-heading -->
+            
+                <div class="form-group">
+                  <div class="titulo">
+                    <img class="imagen" [src]="rutaImagen[3]"><br>
+                  </div>
+
+                  <b>Nombre</b>
+                  <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{nombreCientifico[3]}}</div>
+
+                  <div class="campoLateral">
+                    <b>Descripcion</b><br>
+                    <textarea class="textarea" disabled="disabled" rows="4" cols="36" style="color: black;">{{descCientifico[3]}}</textarea><br>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Energia</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{energiasCientificos[3]}}</div>
+                  </div>
+
+                  <div class="campoLateral">
+                    <b>Precio</b>
+                    <div class="panelblanco" class="form-control" style="width: 95%; color: black;">{{preciosCientificos[3]}}</div><br>
+                  </div>
+                </div>
+
+              <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+
+        </div>
+
+        <!--/////////////////////////////////////////////////////////////////////-->
+
+
+
+
+
+        <!-- /.col-lg-6 -->
+      </div>
+      <!-- /.row -->
+
+      <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- jQuery -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="../dist/js/sb-admin-2.js"></script>
+
+  <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+  <script>
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+    })
+    // popover demo
+    $("[data-toggle=popover]")
+      .popover()
+  </script>
+
+</body>
+
+</html>

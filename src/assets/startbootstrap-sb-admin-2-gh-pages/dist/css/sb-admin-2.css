@@ -4,9 +4,8 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-  background-image: url(/assets/ebe.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #f8f8f8;
+
 }
 
 .form-group{
@@ -15,9 +14,24 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.ColorBoton{
+  background-color: aqua !important;
 
-.form-control{
-  width: 90%;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6e707e;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #d1d3e2;
+  border-radius: .35rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 textarea{
@@ -31,6 +45,10 @@ textarea{
   color: rgb(168, 168, 168);
 }
 
+.errorVacio{
+  color: rgb(223, 48, 48);
+}
+
 .panelblanco{
 background-color: white;
 border-radius: 5px;
@@ -42,7 +60,7 @@ border-radius: 5px;
 
 
 .btn{
-  background-color: rgb(210, 219, 233);
+  background-color: rgb(88, 196, 230);
   box-shadow: 1px 2px;
   border-radius: 10px;
   margin-right: 20px;
@@ -63,23 +81,6 @@ border-radius: 5px;
   margin-left: 24%;
 }
 
-.principal{
-  background-color: rgb(194, 203, 219);
-  box-shadow: 2px 3px;
-  border-radius: 10px;
-  margin-left: 24%;
-  float: left;
-  width: 35%;
-}
-
-.lateral{
-  background-color: rgb(194, 203, 219);
-  box-shadow: 2px 3px;
-  border-radius: 10px;
-  margin-right: 20%;
-  float: right; 
-  width: 20%;
-}
 
 .titulo{
   text-align: center;
